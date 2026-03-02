@@ -2,7 +2,7 @@ name: Build and push Docker image
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, add-docker-ci ]
     tags: [ 'v*', 'V*' ]
   workflow_dispatch: {}
 
