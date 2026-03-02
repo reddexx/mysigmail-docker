@@ -146,3 +146,8 @@ export interface Signature {
     socials: SocialTool[]
   }
 }
+
+export interface AnalyticsItem {
+  name: string
+  value: string
+}

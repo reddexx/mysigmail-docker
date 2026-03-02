@@ -268,5 +268,16 @@ export function useSignatures() {
     setTemplate,
     socials,
     uploadJSON,
+    // compatibility helpers expected by components
+    getSignatures: async () => {
+      // noop for now — components call this to refresh state
+      return Promise.resolve()
+    },
+    signatureRaw: computed(() => installed.value),
+    updateSignature: async (id: string, payload: Partial<Signature>) => {
+      // minimal update: merge payload into installed
+      Object.assign(installed.value, payload)
+      return Promise.resolve()
+    },
   }
 }
