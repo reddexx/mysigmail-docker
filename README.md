@@ -66,6 +66,36 @@ VITE_AWS_S3_KEY=
 VITE_AWS_S3_REGION=
 ```
 
+## Now with Docker support
+
+You can run a pre-built image via Docker Compose. Create a `docker-compose.yml` file (or use the included example) and start the service:
+
+```bash
+docker compose up -d
+```
+
+Example `docker-compose.yml`:
+
+```yaml
+version: '3.8'
+services:
+  web:
+    image: ghcr.io/reddexx/mysigmail:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      VITE_AWS_S3_URL: ""
+      VITE_AWS_S3_BASKET: ""
+      VITE_AWS_S3_ID: ""
+      VITE_AWS_S3_KEY: ""
+      VITE_AWS_S3_REGION: ""
+```
+
+Adjust environment variables if you want to enable S3 image uploads.
+
+
 ## SaaS Version
 Don’t want to deal with setup and running locally?
 
