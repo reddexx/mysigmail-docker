@@ -74,7 +74,7 @@ const icon = computed(() => {
       <UiButton
         v-if="action"
         class="shrink-0"
-        size="md"
+        size="sm"
         @click="onActionClick"
       >
         {{ action.label }}
