@@ -49,7 +49,7 @@ withDefaults(defineProps<Props>(), {
         >{{ model.label }}:&nbsp;&nbsp;</span>
         <Base.Link
           v-if="model.type !== 'text'"
-          v-bind="getAnchorAttrs(model, textColor, enableAnalytics, analyticTag)"
+          v-bind="getAnchorAttrs(model, textColor)"
         >
           {{ model.value }}
         </Base.Link>

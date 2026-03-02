@@ -274,7 +274,7 @@ export function useSignatures() {
       return Promise.resolve()
     },
     signatureRaw: computed(() => installed.value),
-    updateSignature: async (id: string, payload: Partial<Signature>) => {
+    updateSignature: async (_id: string, payload: Partial<Signature>) => {
       // minimal update: merge payload into installed
       Object.assign(installed.value, payload)
       return Promise.resolve()
