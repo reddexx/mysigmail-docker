@@ -19,6 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          corepack enable || true
+          if [ -f pnpm-lock.yaml ]; then corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile; elif [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Build app
+        run: |
+          npm run build
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -39,6 +53,8 @@ jobs:
           file: ./Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            SKIP_BUILD=1
           tags: |
             ghcr.io/${{ github.repository_owner }}/mysigmail:latest
             ghcr.io/${{ github.repository_owner }}/mysigmail:${{ github.sha }}
